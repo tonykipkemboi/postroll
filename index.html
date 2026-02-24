@@ -8,15 +8,14 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --bg: #fafaf8;
+      --bg: #f6f5f3;
       --surface: #ffffff;
-      --border: #e5e5e5;
-      --text: #1a1a1a;
-      --muted: #666;
+      --border: #e8e6e1;
+      --text: #111;
+      --muted: #888;
       --accent: #e63946;
-      --accent-hover: #c1121f;
-      --tag-bg: #f0f0f0;
-      --tag-text: #444;
+      --yt-red: #ff0000;
+      --radius: 14px;
     }
 
     body {
@@ -26,201 +25,252 @@
       min-height: 100vh;
     }
 
-    /* ── hero ── */
-    .hero {
-      max-width: 860px;
+    /* ── nav ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 64px 24px 40px;
     }
 
-    .hero-eyebrow {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
+    .logo {
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 12px;
+    }
+
+    .nav-gh {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      padding: 7px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .nav-gh:hover { border-color: #aaa; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+
+    /* ── hero ── */
+    .hero {
+      max-width: 1100px;
+      margin: 20px auto 0;
+      padding: 60px 40px 56px;
+      border-top: 1.5px solid var(--border);
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 5vw, 3rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-    }
-
-    .hero h1 span { color: var(--accent); }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 560px;
-      line-height: 1.6;
-    }
-
-    .hero-divider {
-      max-width: 860px;
-      margin: 40px auto 0;
-      padding: 0 24px;
-      border-bottom: 2px solid var(--border);
-    }
-
-    /* ── grid ── */
-    .grid-wrap {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 40px 24px 80px;
-    }
-
-    .grid-label {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      font-weight: 900;
+      letter-spacing: -0.035em;
+      line-height: 1.05;
       margin-bottom: 20px;
     }
 
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 480px;
+      line-height: 1.65;
+    }
+
+    .hero-sub a { color: var(--muted); }
+
+    /* ── section label ── */
+    .section-header {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .section-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── grid ── */
     .grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 40px 80px;
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    @media (max-width: 800px) {
+      .grid { grid-template-columns: repeat(2, 1fr); padding: 0 20px 60px; }
+      nav, .hero, .section-header { padding-left: 20px; padding-right: 20px; }
+    }
+
+    @media (max-width: 520px) {
+      .grid { grid-template-columns: 1fr; }
     }
 
     /* ── card ── */
     .card {
       background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      transition: box-shadow 0.15s ease, transform 0.15s ease;
       text-decoration: none;
       color: inherit;
+      transition: box-shadow 0.18s ease, transform 0.18s ease, border-color 0.18s;
     }
 
     .card:hover {
-      box-shadow: 0 6px 24px rgba(0,0,0,0.09);
-      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      transform: translateY(-3px);
+      border-color: #ccc;
     }
 
-    .card-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      background: #1e1e2e;
+    /* thumbnail */
+    .thumb {
       position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 9;
       overflow: hidden;
+      background: #1a1a2e;
     }
 
-    .card-thumb img {
+    .thumb img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
+      transition: transform 0.3s ease;
     }
 
-    .card-thumb-placeholder {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, #1e1e2e 0%, #2d2d3e 100%);
-    }
+    .card:hover .thumb img { transform: scale(1.03); }
 
-    .card-thumb-placeholder svg {
-      opacity: 0.3;
-    }
-
-    .card-duration {
+    .duration {
       position: absolute;
       bottom: 8px;
       right: 8px;
-      background: rgba(0,0,0,0.75);
+      background: rgba(0,0,0,0.82);
       color: #fff;
-      font-size: 0.72rem;
-      font-weight: 600;
-      padding: 2px 6px;
-      border-radius: 4px;
-      letter-spacing: 0.02em;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 5px;
+      letter-spacing: 0.03em;
     }
 
+    /* body */
     .card-body {
-      padding: 16px;
+      padding: 16px 18px 14px;
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 8px;
     }
 
     .card-title {
-      font-size: 0.97rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      line-height: 1.4;
-      color: var(--text);
+      line-height: 1.38;
+      margin-bottom: 5px;
     }
 
     .card-author {
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       color: var(--muted);
+      margin-bottom: 12px;
     }
 
     .card-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 5px;
       margin-top: auto;
-      padding-top: 10px;
     }
 
     .tag {
-      background: var(--tag-bg);
-      color: var(--tag-text);
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      padding: 3px 8px;
+      background: var(--bg);
+      color: #555;
+      padding: 3px 9px;
       border-radius: 20px;
+      border: 1px solid var(--border);
     }
 
+    /* footer row */
     .card-footer {
-      padding: 12px 16px;
-      border-top: 1px solid var(--border);
+      padding: 11px 18px;
+      border-top: 1.5px solid var(--border);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .card-read-btn {
+    .read-btn {
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--accent);
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
     }
 
-    .card-read-btn svg { transition: transform 0.15s; }
-    .card:hover .card-read-btn svg { transform: translateX(3px); }
+    .read-btn svg { transition: transform 0.15s; }
+    .card:hover .read-btn svg { transform: translateX(3px); }
 
-    .card-yt-link {
-      font-size: 0.75rem;
-      color: var(--muted);
-      text-decoration: none;
+    /* YouTube link */
+    .yt-link {
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--muted);
+      text-decoration: none;
+      padding: 4px 9px;
+      border-radius: 6px;
+      transition: background 0.15s, color 0.15s;
     }
 
-    .card-yt-link:hover { color: var(--text); }
+    .yt-link:hover { background: #fff0f0; color: var(--yt-red); }
 
-    /* ── footer ── */
+    .yt-icon { width: 14px; height: 14px; flex-shrink: 0; }
+
+    /* ── site footer ── */
     .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 0.82rem;
+      border-top: 1.5px solid var(--border);
+      padding: 24px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.78rem;
       color: var(--muted);
     }
 
@@ -230,121 +280,120 @@
 </head>
 <body>
 
+  <nav>
+    <span class="logo">Postroll</span>
+    <a class="nav-gh" href="https://github.com/tonykipkemboi/postroll" target="_blank">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      GitHub
+    </a>
+  </nav>
+
   <div class="hero">
-    <p class="hero-eyebrow">postroll</p>
-    <h1>Watch once.<br><span>Read forever.</span></h1>
-    <p>Deep companion guides for YouTube videos — chapters, screenshots, code, and prose. Built with Whisper + Gemini.</p>
+    <h1>Watch once.<br><em>Read forever.</em></h1>
+    <p class="hero-sub">
+      Deep companion guides for YouTube videos — chapters, screenshots, code, and prose.
+      Built with Whisper + Gemini. Inspired by
+      <a href="https://x.com/karpathy/status/1760740503614836917" target="_blank">@karpathy</a>.
+    </p>
   </div>
-  <div class="hero-divider"></div>
 
-  <div class="grid-wrap">
-    <p class="grid-label">Examples — <!-- AUTO-COUNT -->3 guides</p>
+  <div class="section-header">
+    <span class="section-label">3 example guides</span>
+    <span class="section-line"></span>
+  </div>
 
-    <div class="grid">
+  <div class="grid">
 
-      <!-- ── Karpathy: GPT Tokenizer ── -->
-      <a class="card" href="outputs/lets-build-the-gpt-tokenizer.html">
-        <div class="card-thumb">
-          <img
-            src="https://i.ytimg.com/vi/zduSFxRajkE/hqdefault.jpg"
-            alt="Let's build the GPT Tokenizer thumbnail"
-            onerror="this.parentElement.innerHTML='<div class=card-thumb-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'%23fff\'><path d=\'M8 5v14l11-7z\'/></svg></div>'"
-          />
-          <span class="card-duration">2:13:34</span>
+    <!-- Karpathy: GPT Tokenizer -->
+    <a class="card" href="outputs/lets-build-the-gpt-tokenizer.html">
+      <div class="thumb">
+        <img src="https://i.ytimg.com/vi/zduSFxRajkE/hqdefault.jpg" alt="Let's build the GPT Tokenizer" />
+        <span class="duration">2:13:34</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">Let's build the GPT Tokenizer</p>
+        <p class="card-author">Andrej Karpathy</p>
+        <div class="card-tags">
+          <span class="tag">LLMs</span>
+          <span class="tag">tokenization</span>
+          <span class="tag">Python</span>
         </div>
-        <div class="card-body">
-          <p class="card-title">Let's build the GPT Tokenizer</p>
-          <p class="card-author">Andrej Karpathy</p>
-          <div class="card-tags">
-            <span class="tag">LLMs</span>
-            <span class="tag">tokenization</span>
-            <span class="tag">Python</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-read-btn">
-            Read guide
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-          <a class="card-yt-link" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" onclick="event.stopPropagation()">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.08-.1z"/></svg>
-            YouTube
-          </a>
-        </div>
-      </a>
+      </div>
+      <div class="card-footer">
+        <span class="read-btn">
+          Read guide
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=zduSFxRajkE" target="_blank" onclick="event.stopPropagation()">
+          <svg class="yt-icon" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </a>
 
-      <!-- ── CrewAI Flows Made Super Easy ── -->
-      <a class="card" href="outputs/crewai-flows-made-super-easy.html">
-        <div class="card-thumb">
-          <img
-            src="https://i.ytimg.com/vi/J57nXAQozVA/hqdefault.jpg"
-            alt="CrewAI Flows Made Super Easy thumbnail"
-            onerror="this.parentElement.innerHTML='<div class=card-thumb-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'%23fff\'><path d=\'M8 5v14l11-7z\'/></svg></div>'"
-          />
-          <span class="card-duration">15:04</span>
+    <!-- CrewAI Flows -->
+    <a class="card" href="outputs/crewai-flows-made-super-easy.html">
+      <div class="thumb">
+        <img src="https://i.ytimg.com/vi/J57nXAQozVA/hqdefault.jpg" alt="CrewAI Flows Made Super Easy" />
+        <span class="duration">15:04</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">CrewAI Flows Made Super Easy</p>
+        <p class="card-author">The How-To Guy</p>
+        <div class="card-tags">
+          <span class="tag">AI agents</span>
+          <span class="tag">CrewAI</span>
+          <span class="tag">workflows</span>
         </div>
-        <div class="card-body">
-          <p class="card-title">CrewAI Flows Made Super Easy</p>
-          <p class="card-author">The How-To Guy</p>
-          <div class="card-tags">
-            <span class="tag">AI agents</span>
-            <span class="tag">CrewAI</span>
-            <span class="tag">workflows</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-read-btn">
-            Read guide
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-          <a class="card-yt-link" href="https://www.youtube.com/watch?v=J57nXAQozVA" target="_blank" onclick="event.stopPropagation()">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.08-.1z"/></svg>
-            YouTube
-          </a>
-        </div>
-      </a>
+      </div>
+      <div class="card-footer">
+        <span class="read-btn">
+          Read guide
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=J57nXAQozVA" target="_blank" onclick="event.stopPropagation()">
+          <svg class="yt-icon" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </a>
 
-      <!-- ── CrewAI Task Guardrails ── -->
-      <a class="card" href="outputs/crewai-task-guardrails.html">
-        <div class="card-thumb">
-          <img
-            src="https://i.ytimg.com/vi/ibYkJVE1Rqs/hqdefault.jpg"
-            alt="CrewAI Task Guardrails thumbnail"
-            onerror="this.parentElement.innerHTML='<div class=card-thumb-placeholder><svg width=40 height=40 viewBox=\'0 0 24 24\' fill=\'%23fff\'><path d=\'M8 5v14l11-7z\'/></svg></div>'"
-          />
-          <span class="card-duration">8:35</span>
+    <!-- CrewAI Task Guardrails -->
+    <a class="card" href="outputs/crewai-task-guardrails.html">
+      <div class="thumb">
+        <img src="https://i.ytimg.com/vi/ibYkJVE1Rqs/hqdefault.jpg" alt="CrewAI Task Guardrails" />
+        <span class="duration">8:35</span>
+      </div>
+      <div class="card-body">
+        <p class="card-title">CrewAI Task Guardrails</p>
+        <p class="card-author">The How-To Guy</p>
+        <div class="card-tags">
+          <span class="tag">AI agents</span>
+          <span class="tag">CrewAI</span>
+          <span class="tag">safety</span>
         </div>
-        <div class="card-body">
-          <p class="card-title">CrewAI Task Guardrails</p>
-          <p class="card-author">The How-To Guy</p>
-          <div class="card-tags">
-            <span class="tag">AI agents</span>
-            <span class="tag">CrewAI</span>
-            <span class="tag">safety</span>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span class="card-read-btn">
-            Read guide
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
-          <a class="card-yt-link" href="https://www.youtube.com/watch?v=ibYkJVE1Rqs" target="_blank" onclick="event.stopPropagation()">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15.3a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.69a8.27 8.27 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.08-.1z"/></svg>
-            YouTube
-          </a>
-        </div>
-      </a>
+      </div>
+      <div class="card-footer">
+        <span class="read-btn">
+          Read guide
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </span>
+        <a class="yt-link" href="https://www.youtube.com/watch?v=ibYkJVE1Rqs" target="_blank" onclick="event.stopPropagation()">
+          <svg class="yt-icon" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </a>
 
-    </div>
   </div>
 
   <footer class="site-footer">
-    <p>
-      <a href="https://github.com/tonykipkemboi/postroll" target="_blank">postroll</a>
-      &nbsp;·&nbsp; inspired by
-      <a href="https://x.com/karpathy/status/1760740503614836917" target="_blank">@karpathy</a>
-      &nbsp;·&nbsp; built with Whisper + Gemini
-    </p>
+    <span>Built by <a href="https://github.com/tonykipkemboi" target="_blank">@tonykipkemboi</a></span>
+    <span>
+      <a href="https://github.com/tonykipkemboi/postroll" target="_blank">postroll on GitHub</a>
+      &nbsp;·&nbsp;
+      inspired by <a href="https://x.com/karpathy/status/1760740503614836917" target="_blank">@karpathy</a>
+    </span>
   </footer>
 
 </body>
