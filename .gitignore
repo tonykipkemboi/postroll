@@ -1,0 +1,28 @@
+# Secrets — never commit API keys
+.env
+
+# Generated video/audio assets (large, re-downloadable via yt-dlp)
+videos/
+
+# Pipeline outputs
+outputs/
+
+# macOS
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+
+# Node (audit tooling)
+node_modules/
+audit_report.js
+
+# Editor
+.vscode/
+.idea/
+*.swp
