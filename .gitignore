@@ -4,8 +4,8 @@
 # Generated video/audio assets (large, re-downloadable via yt-dlp)
 videos/
 
-# Pipeline outputs
-outputs/
+# Pipeline outputs (tracked so GitHub Pages can render them)
+# outputs/
 
 # macOS
 .DS_Store
