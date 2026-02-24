@@ -6,11 +6,15 @@
 
 ## Inspiration
 
-This started with a tweet by [Andrej Karpathy](https://x.com/karpathy) *(link coming — drop it in the issue tracker if you have it)* and his [tokenizer lecture on YouTube](https://www.youtube.com/watch?v=zduSFxRajkE).
+[Andrej Karpathy](https://x.com/karpathy) put the idea perfectly:
 
-For that video, Karpathy manually wrote [`lecture.md`](https://github.com/karpathy/minbpe/blob/master/lecture.md) — a dense, specific companion guide covering every concept, every code snippet, every paper reference. It's the kind of notes that make a 2-hour lecture actually stick.
+> *"Fun LLM challenge that I'm thinking about: take my 2h13m tokenizer video and translate the video into the format of a book chapter (or a blog post) on tokenization. Something like: 1. Whisper the video 2. Chop up into segments of aligned images and text 3. Prompt engineer an LLM… More generally, a workflow like this could be applied to any input video and auto-generate 'companion guides' for various tutorials in a more readable, skimmable, searchable format. Feels tractable but non-trivial."*
+>
+> — [@karpathy](https://x.com/karpathy/status/1760740503614836917), Feb 22 2024
 
-**postroll automates that.** Give it any YouTube URL and it produces a structured HTML companion guide: timestamped sections, screenshots, and prose that goes deep — exact variable names, verbatim code, referenced papers.
+For that same video he also manually wrote [`lecture.md`](https://github.com/karpathy/minbpe/blob/master/lecture.md) — a dense companion guide covering every concept, code snippet, and paper reference. That's the quality bar.
+
+**postroll builds the pipeline he described.** Give it any YouTube URL and it produces a structured HTML companion guide: timestamped sections, screenshots, and prose that goes deep — exact variable names, verbatim code, referenced papers.
 
 ---
 
@@ -96,8 +100,8 @@ All knobs live in `agent_pipeline/config.py`:
 ## Project structure
 
 ```
+agent_run.py             # CLI entry point
 agent_pipeline/
-├── __main__.py          # CLI entry point
 ├── orchestrator.py      # Parallel section agents
 ├── config.py            # All config knobs
 └── tools/
